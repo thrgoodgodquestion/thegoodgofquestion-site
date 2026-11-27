@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Good God Question</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="The Good God Question: why humans believe, explored through psychology, philosophy, history and real research.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long page. Ink-blue hero, an Instagram-style grid of data posts that open as swipeable carousels, the season list, then About Ritul */
+:root{
+  --bg:#f3f2ee; --fg:#1d1c2b; --muted:#646273; --card:#ffffff; --ink:#24224a; --on-ink:#f4efe4; --ochre:#b97a22; --ochre-ink:#e0a24a; --line:#dcdad3;
+  --display:"DM Serif Display",Georgia,serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#121119;--fg:#ecebf3;--muted:#9c9aac;--card:#1c1b27;--ink:#26244f;--on-ink:#f4efe4;--ochre:#e0a24a;--ochre-ink:#e0a24a;--line:#2e2d3b;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121119;--fg:#ecebf3;--muted:#9c9aac;--card:#1c1b27;--ink:#26244f;--on-ink:#f4efe4;--ochre:#e0a24a;--ochre-ink:#e0a24a;--line:#2e2d3b;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;margin:0}
+a{color:inherit}
+.in{max-width:960px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance}
+
+/* top bar */
+.bar{background:var(--ink);color:var(--on-ink)}
+.bar .in{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:14px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-size:20px;text-decoration:none}
+.bar nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
+.bar nav a{text-decoration:none;opacity:.85}
+.bar nav a:hover,.bar nav a:focus-visible{opacity:1;text-decoration:underline}
+
+/* hero */
+.hero{background:var(--ink);color:var(--on-ink)}
+.hero .in{padding-block:56px 72px;display:flex;flex-direction:column;gap:18px}
+.hero h1{font-size:clamp(40px,8vw,76px);max-width:14ch}
+.hero h1 em{color:var(--ochre-ink)}
+.hero p{max-width:56ch;margin:0;font-size:clamp(16px,2.2vw,19px);opacity:.9}
+.hero .eyebrow{color:var(--ochre-ink)}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.btn{display:inline-block;padding:10px 18px;border:1px solid var(--on-ink);border-radius:999px;text-decoration:none;font-size:14px;font-weight:500}
+.btn.solid{background:var(--on-ink);color:var(--ink)}
+
+section.block{padding-block:64px}
+section.block .head{display:flex;flex-direction:column;gap:8px;margin-bottom:28px;max-width:60ch}
+section.block h2{font-size:clamp(30px,5vw,44px)}
+section.block .head p{margin:0;color:var(--muted)}
+
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.tile{aspect-ratio:1;max-width:100%;border:0;padding:clamp(10px,2.5vw,20px);cursor:pointer;background:var(--ink);color:var(--on-ink);display:flex;flex-direction:column;justify-content:space-between;text-align:left;font:inherit}
+.tile:focus-visible,.nav button:focus-visible,.btn:focus-visible,.close:focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+.tile .q{font-family:var(--display);font-size:clamp(15px,3.4vw,28px);line-height:1.1}
+.tile .meta{font-family:var(--mono);font-size:clamp(9px,1.5vw,12px);opacity:.8}
+.tile.soon{background:var(--card);border:1px dashed var(--line);color:var(--muted);cursor:default;display:grid;place-items:center;font-family:var(--mono);font-size:12px}
+
+/* carousel overlay */
+.overlay{position:fixed;inset:0;background:rgba(10,9,20,.82);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:calc(16px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.close{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));background:none;border:0;color:#fff;font-size:30px;cursor:pointer;line-height:1}
+.track{width:min(560px,100%,calc(100vh - 170px));aspect-ratio:1;max-width:100%;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:6px;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;scroll-snap-align:start;background:var(--ink);color:var(--on-ink);padding:clamp(18px,5vw,36px);display:flex;flex-direction:column;gap:12px;min-width:0;overflow:hidden}
+.slide .tag{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre-ink)}
+.slide h3{font-size:clamp(22px,5.5vw,38px)}
+.slide p{margin:0;font-size:clamp(13px,3vw,16px);max-width:44ch}
+.slide .small{font-size:clamp(11px,2.5vw,13px);opacity:.75;margin-top:auto}
+.slide.cover{justify-content:center}
+.slide.cover h3{font-size:clamp(30px,8vw,54px)}
+.bars{display:flex;flex-direction:column;gap:5px;font-family:var(--mono);font-size:clamp(10px,2.5vw,13px);font-variant-numeric:tabular-nums}
+.bars div{display:grid;grid-template-columns:7.5em 1fr 2.8em;align-items:center;gap:8px}
+.bars i{display:block;height:clamp(8px,2vw,12px);background:var(--ochre-ink);border-radius:1px}
+.bars span:last-child{text-align:right}
+.trend{display:flex;flex-direction:column;gap:9px;font-variant-numeric:tabular-nums}
+.trend div{display:grid;grid-template-columns:6em 1fr;gap:10px;align-items:baseline;font-size:clamp(12px,2.9vw,15px)}
+.trend b{font-family:var(--mono);font-weight:500;color:var(--ochre-ink)}
+.nav{display:flex;align-items:center;gap:14px}
+.nav button{background:#fff;color:#1d1c2b;border:0;border-radius:50%;width:38px;height:38px;font-size:18px;cursor:pointer}
+.dots{display:flex;gap:6px}
+.dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35)}
+.dots span.on{background:var(--ochre-ink)}
+.src{color:#d8d6e2;font-size:12px;max-width:560px;text-align:center;margin:0}
+
+/* season */
+.season{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;list-style:none;padding:0;margin:0}
+.season li{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.season .n{font-family:var(--mono);font-size:12px;color:var(--ochre)}
+.season h3{font-size:22px}
+
+/* about */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:start}
+.about blockquote{margin:0;font-family:var(--display);font-style:italic;font-size:clamp(24px,3.6vw,34px);line-height:1.2;color:var(--ochre)}
+.about .text{display:flex;flex-direction:column;gap:14px;max-width:62ch;min-width:0}
+.about .text p{margin:0}
+@media (max-width:700px){.about{grid-template-columns:1fr;gap:20px}}
+
+footer{border-top:1px solid var(--line)}
+footer .in{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="in">
+  <a class="logo" href="#top">The Good God Question</a>
+  <nav><a href="#numbers">Belief in Numbers</a><a href="#season">Season 1</a><a href="#about">About</a></nav>
+</div></div>
+
+<header class="hero" id="top"><div class="in">
+  <div class="eyebrow">Religion, approached with curiosity</div>
+  <h1>Why do humans <em>believe?</em></h1>
+  <p>Not to defend any faith. Not to mock one. To understand. Real research on belief, from the first rituals to today, told in plain language.</p>
+  <div class="links">
+    <a class="btn solid" href="https://www.instagram.com/thegoodgodquestion/" target="_blank" rel="noopener">Instagram</a>
+    <a class="btn" id="yt" href="#season">YouTube</a>
+  </div>
+</div></header>
+
+<section class="block" id="numbers"><div class="in">
+  <div class="head">
+    <div class="eyebrow">Belief in Numbers</div>
+    <h2>Old numbers, new questions</h2>
+    <p>Each post takes a real survey from the past, the theory behind it, and asks what it means for us today. Tap a post to swipe through.</p>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section class="block" id="season" style="padding-top:0"><div class="in">
+  <div class="head">
+    <div class="eyebrow">On YouTube</div>
+    <h2>Season 1: where belief began</h2>
+    <p>Each episode is one big question, built on real research, and ends with songs that carry the same idea.</p>
+  </div>
+  <ol class="season">
+    <li><span class="n">Episode 1</span><h3>Why do humans believe at all?</h3></li>
+    <li><span class="n">Episode 2</span><h3>Why do some gods die?</h3></li>
+    <li><span class="n">Episode 3</span><h3>Did the powerless invent God?</h3></li>
+    <li><span class="n">Episode 4</span><h3>Who is God watching for?</h3></li>
+    <li><span class="n">Episode 5</span><h3>Can a person be their own priest?</h3></li>
+    <li><span class="n">Episode 6</span><h3>What makes a quiet faith frightening?</h3></li>
+  </ol>
+</div></section>
+
+<section class="block" id="about" style="padding-top:0"><div class="in about">
+  <div>
+    <div class="eyebrow">About</div>
+    <blockquote>"I'm someone with a question I can't put down."</blockquote>
+  </div>
+  <div class="text">
+    <p>Hi, I'm Ritul. I'm a master's student in Delhi, and I have questions about almost everything. But one question has followed me since I was a child: God.</p>
+    <p>I've been a Shiv devotee for as long as I can remember. And for just as long, I've wondered if he is really there. So instead of pushing the question away, I decided to go looking, through psychology, philosophy, history, anthropology, and the spiritual side too.</p>
+    <p>I'm not a priest, and I'm not here to take anyone's faith away. If you've ever stood in a temple, a church or a mosque and wondered what is really going on, join me. Let's work it out together.</p>
+  </div>
+</div></section>
+
+<footer><div class="in">
+  <span>© 2026 The Good God Question</span>
+  <span>Every number on this site links to its source.</span>
+</div></footer>
+
+<div class="overlay" id="overlay" hidden role="dialog" aria-modal="true" aria-label="Post">
+  <button class="close" id="close" aria-label="Close">×</button>
+  <div class="track" id="track"></div>
+  <div class="nav"><button id="prev" aria-label="Previous slide">‹</button><div class="dots" id="dots"></div><button id="next" aria-label="Next slide">›</button></div>
+  <p class="src" id="src"></p>
+</div>
+
+<script>
+/* ===== POSTS: add a new post by copying one block below ===== */
+const POSTS = [
+{
+  num: "01", label: "Morality", title: "Do you need God to be good?",
+  sources: '<a href="https://www.pewresearch.org/global/2020/07/20/the-global-god-divide/" target="_blank" rel="noopener">Pew, The Global God Divide (2020)</a> · <a href="https://www.pewresearch.org/short-reads/2026/03/05/in-the-us-and-other-countries-fewer-people-now-say-its-necessary-to-believe-in-god-to-be-moral/" target="_blank" rel="noopener">Pew (2026)</a> · Norris & Inglehart, Sacred and Secular (2004)',
+  slides: [
+    `<div class="slide cover"><div class="tag">Belief in Numbers · 01</div><h3>Do you need God to be good?</h3><p>Half the world says yes. The other half says no. Which half you're in depends a lot on how rich your country is.</p><p class="small">Swipe →</p></div>`,
+    `<div class="slide"><div class="tag">Then · 2019</div><h3>"You must believe in God to be moral"</h3><div class="bars">
+      <div><span>Indonesia</span><i style="width:96%"></i><span>96%</span></div>
+      <div><span>Kenya</span><i style="width:95%"></i><span>95%</span></div>
+      <div><span>Nigeria</span><i style="width:93%"></i><span>93%</span></div>
+      <div><span>Brazil</span><i style="width:84%"></i><span>84%</span></div>
+      <div><span>India</span><i style="width:79%"></i><span>79%</span></div>
+      <div><span>USA</span><i style="width:44%"></i><span>44%</span></div>
+      <div><span>Japan</span><i style="width:39%"></i><span>39%</span></div>
+      <div><span>France</span><i style="width:15%"></i><span>15%</span></div>
+      <div><span>Sweden</span><i style="width:9%"></i><span>9%</span></div>
+    </div><p class="small">Pew Research Center, 34 countries, 2019. Median: 45%.</p></div>`,
+    `<div class="slide"><div class="tag">Why</div><h3>When life feels unsafe, God feels necessary</h3><p>Political scientists Pippa Norris and Ronald Inglehart called this <em>existential security</em> (Sacred and Secular, 2004). People hold on to God most where life is uncertain. As life gets safer, religion slowly loosens its grip.</p><p>Pew's data fits: the richer the country, the fewer people link God to goodness. Kenya ($4,509 per person) said 95%. Sweden ($55,815) said 9%.</p><p class="small">Pew 2020: correlation with GDP per person, −0.86.</p></div>`,
+    `<div class="slide"><div class="tag">Now · 2025</div><h3>Most of the world is letting go. Two countries aren't.</h3><div class="trend">
+      <div><b>USA</b><span>58% (2002) → 44% (2019) → 31% (2025)</span></div>
+      <div><b>Germany</b><span>37% (2022) → 21% (2025)</span></div>
+      <div><b>Nigeria</b><span>93% (2019) → 77% (2025)</span></div>
+      <div><b>India</b><span>70% (2013) → 79% (2019) → 85% (2025)</span></div>
+      <div><b>Indonesia</b><span>96% (2019) → 99% (2025)</span></div>
+    </div><p class="small">Pew, 2025 survey of 25 countries. Only India and Indonesia rose between 2022 and 2025.</p></div>`,
+    `<div class="slide cover"><div class="tag">Now?</div><h3>India is getting richer every year. So why is it more sure than ever that goodness needs God?</h3><p>Is the theory wrong? Or does faith in India mean something money can't replace?</p></div>`
+  ]
+}
+];
+/* ===== YouTube channel link: paste it here ===== */
+const YOUTUBE = "";
+
+const grid=document.getElementById('grid'),ov=document.getElementById('overlay'),track=document.getElementById('track'),dots=document.getElementById('dots'),src=document.getElementById('src');
+if(YOUTUBE){const y=document.getElementById('yt');y.href=YOUTUBE;y.target="_blank";y.rel="noopener"}
+POSTS.forEach((p,i)=>{const b=document.createElement('button');b.className='tile';b.setAttribute('aria-label','Open post: '+p.title);
+  b.innerHTML=`<span class="meta">${p.num} · ${p.label}</span><span class="q">${p.title}</span><span class="meta">${p.slides.length} slides →</span>`;
+  b.onclick=()=>openPost(i,b);grid.appendChild(b)});
+const fill=(3-POSTS.length%3)%3;for(let i=0;i<fill;i++){const d=document.createElement('div');d.className='tile soon';d.textContent='Coming soon';grid.appendChild(d)}
+let opener=null;
+function openPost(i,b){opener=b;const p=POSTS[i];track.innerHTML=p.slides.join('');src.innerHTML='Sources: '+p.sources;
+  dots.innerHTML='';p.slides.forEach(()=>dots.appendChild(document.createElement('span')));ov.hidden=false;track.scrollLeft=0;paint();document.getElementById('next').focus()}
+function closePost(){ov.hidden=true;opener&&opener.focus()}
+const cur=()=>Math.round(track.scrollLeft/Math.max(1,track.clientWidth));
+function paint(){const c=cur();[...dots.children].forEach((d,i)=>d.classList.toggle('on',i===c))}
+function go(i){i=Math.max(0,Math.min(track.children.length-1,i));track.scrollTo({left:i*track.clientWidth,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}
+track.addEventListener('scroll',paint,{passive:true});
+document.getElementById('prev').onclick=()=>go(cur()-1);
+document.getElementById('next').onclick=()=>go(cur()+1);
+document.getElementById('close').onclick=closePost;
+ov.addEventListener('click',e=>{if(e.target===ov)closePost()});
+document.addEventListener('keydown',e=>{if(ov.hidden)return;if(e.key==='Escape')closePost();if(e.key==='ArrowRight')go(cur()+1);if(e.key==='ArrowLeft')go(cur()-1)});
+</script>
+</body>
+</html>
