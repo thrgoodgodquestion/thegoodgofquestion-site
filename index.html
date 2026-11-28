@@ -15,12 +15,12 @@
 <meta property="og:url" content="https://thegoodgodquestion.github.io/thegoodgodquestion-site/">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","name":"The Good God Question","url":"https://thegoodgodquestion.github.io/thegoodgodquestion-site/","description":"Why do humans believe in God? The Good God Question explores the origins of religion and belief through psychology, history, anthropology and real research, in plain language. Video essays, reels and data on faith around the world."},{"@type":"Organization","name":"The Good God Question","url":"https://thegoodgodquestion.github.io/thegoodgodquestion-site/","sameAs":["https://www.instagram.com/thegoodgodquestion/","https://www.youtube.com/@thegoodgodquestion"]}]}</script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Cinzel:wght@500&family=EB+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one long page. Burgundy hero with a soft gold halo, an Instagram-style grid of data posts that open as swipeable carousels, the season list, then About Ritul on a sage band */
+/* Layout: one long page. Deep maroon, agency-style hero with a haloed sage figure lit in tomato red and neon, an Instagram-style grid of data posts that open as swipeable carousels, the season list, then About Ritul on a sage band */
 :root{
-  color-scheme:light; --bg:#E8D2B5; --fg:#2a0a08; --muted:#5e4a3c; --card:#F1E3CF; --ink:#590907; --on-ink:#F3E6D3; --ochre:#7a5712; --ochre-ink:#d9b45f; --sage:#A5A79B; --sage-deep:#2b2e25; --quote:#590907; --line:#cfb48f;
-  --display:"Cormorant Garamond",Georgia,serif; --body:"EB Garamond",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,monospace; --caps:"Cinzel",Georgia,serif;
+  color-scheme:dark; --bg:#250104; --fg:#F3E6D3; --muted:#cfb2aa; --card:#360507; --ink:#3a0507; --on-ink:#F3E6D3; --ochre:#CDF73D; --ochre-ink:#CDF73D; --tomato:#D71A06; --sage:#360507; --sage-deep:#CDF73D; --quote:#F3E6D3; --line:#5a1814;
+  --display:"Anton","Arial Narrow",Impact,sans-serif; --body:"Inter",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace; --caps:"Inter",system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -117,6 +117,48 @@ footer{border-top:1px solid var(--line)}
 footer .in{padding-block:28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:13px}
 footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:var(--ink)}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+/* maroon theme overrides */
+body{font-size:16px}
+h1,h2,h3{font-weight:400;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.eyebrow{font-weight:600;letter-spacing:.22em}
+.logo{font-weight:600;color:var(--on-ink)}
+.hero{background:radial-gradient(ellipse 55% 75% at 78% 45%,color-mix(in srgb,var(--tomato) 45%,transparent),transparent 70%),var(--bg)}
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:24px;padding-block:40px 56px}
+.hero .copy{display:flex;flex-direction:column;gap:18px;min-width:0}
+.hero h1{font-size:clamp(52px,9vw,112px);max-width:none}
+.hero h1 em{font-style:normal;color:var(--tomato)}
+.hero .fig{width:100%;max-width:420px;justify-self:center}
+.hero .fig svg{width:100%;height:auto;display:block}
+.btn{font-family:var(--body);font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:13px;border-color:var(--on-ink);color:var(--on-ink)}
+.btn.solid{background:var(--ochre-ink);border-color:var(--ochre-ink);color:#250104}
+.tile{box-shadow:inset 0 0 0 1px var(--line)}
+.tile .q{text-transform:uppercase;line-height:1}
+.tile .meta{font-family:var(--body);font-weight:600}
+.slide{background:radial-gradient(ellipse 70% 60% at 90% 0%,color-mix(in srgb,var(--tomato) 35%,transparent),transparent 70%),#3a0507}
+.slide h3{line-height:1.02}
+.slide .tag{font-family:var(--body);font-weight:600}
+.season li{background:var(--card);border-color:var(--line)}
+.what li{border-top-color:var(--tomato)}
+.about blockquote{font-style:normal;text-transform:uppercase;line-height:1.05;color:var(--on-ink)}
+.about blockquote::first-letter{color:var(--ochre)}
+footer .made{font-family:var(--display);font-style:normal;text-transform:uppercase;letter-spacing:.06em;color:var(--ochre)}
+.overlay{background:rgba(20,0,2,.9)}
+/* raw layer */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.16;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.btn,.track,.season li,.nav button{border-radius:0!important}
+.btn{border-width:2px}
+.hero h1{text-shadow:3px 2px 0 color-mix(in srgb,var(--tomato) 55%,transparent);letter-spacing:-.005em}
+.hero h1 em{text-shadow:-3px 2px 0 color-mix(in srgb,var(--ochre) 45%,transparent)}
+.hero .fig svg{filter:url(#rough) contrast(1.08)}
+section.block h2{text-shadow:2px 2px 0 color-mix(in srgb,var(--tomato) 45%,transparent)}
+.eyebrow::before{content:"/// ";opacity:.7}
+.season li{border:1px dashed var(--line)}
+.what li{border-top:2px solid var(--tomato)}
+.tile{box-shadow:inset 0 0 0 1px var(--line),inset 0 0 0 6px var(--bg),inset 0 0 0 7px color-mix(in srgb,var(--ochre) 35%,transparent)}
+.bar{border-bottom:2px solid var(--ochre)}
+@media (prefers-reduced-motion:no-preference){.hero .fig svg{animation:flicker 6s steps(1) infinite}}
+@keyframes flicker{0%,100%{opacity:1}92%{opacity:.88}93%{opacity:1}96%{opacity:.93}}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}.hero .fig{max-width:300px;order:-1}}
 </style>
 </head>
 <body>
@@ -127,6 +169,7 @@ footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:v
 </div></div>
 
 <header class="hero" id="top"><div class="in">
+  <div class="copy">
   <div class="eyebrow">Religion, approached with curiosity</div>
   <h1>Why do humans <em>believe?</em></h1>
   <p>Not to defend any faith. Not to mock one. To understand. Real research on belief, from the first rituals to today, told in plain language.</p>
@@ -134,6 +177,32 @@ footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:v
     <a class="btn solid" href="https://www.instagram.com/thegoodgodquestion/" target="_blank" rel="noopener">Instagram</a>
     <a class="btn" id="yt" href="#season">YouTube</a>
   </div>
+  </div>
+  <div class="fig" aria-hidden="true"><svg viewBox="0 0 400 470" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter>
+    <radialGradient id="glow" cx="50%" cy="45%" r="50%"><stop offset="0" stop-color="#D71A06" stop-opacity=".85"/><stop offset=".6" stop-color="#D71A06" stop-opacity=".25"/><stop offset="1" stop-color="#D71A06" stop-opacity="0"/></radialGradient>
+    <linearGradient id="robe" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4a0806"/><stop offset="1" stop-color="#140002"/></linearGradient>
+  </defs>
+  <circle cx="200" cy="215" r="200" fill="url(#glow)"/>
+  <circle cx="200" cy="122" r="84" fill="none" stroke="#CDF73D" stroke-width="3"/>
+  <circle cx="200" cy="122" r="96" fill="none" stroke="#CDF73D" stroke-width="1" stroke-dasharray="2 9" opacity=".8"/>
+  <ellipse cx="200" cy="62" rx="16" ry="17" fill="#F3E6D3"/>
+  <path d="M200 168 C130 172 104 236 112 338 L288 338 C296 236 270 172 200 168Z" fill="url(#robe)" stroke="#D71A06" stroke-width="2"/>
+  <path d="M158 186 C128 220 104 280 98 336" stroke="#D71A06" stroke-width="2" fill="none"/>
+  <path d="M242 186 C272 220 296 280 302 336" stroke="#D71A06" stroke-width="2" fill="none"/>
+  <ellipse cx="200" cy="352" rx="168" ry="46" fill="url(#robe)" stroke="#D71A06" stroke-width="2"/>
+  <circle cx="200" cy="116" r="38" fill="#b9805f"/>
+  <path d="M162 110 Q164 76 200 74 Q236 76 238 110 Q226 88 200 88 Q174 88 162 110Z" fill="#F3E6D3"/>
+  <path d="M178 116 q7 6 14 0 M208 116 q7 6 14 0" stroke="#2a0a08" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M168 132 Q200 146 232 132 Q236 182 200 214 Q164 182 168 132Z" fill="#F3E6D3"/>
+  <path d="M190 138 q10 5 20 0" stroke="#b9805f" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <circle cx="200" cy="96" r="3" fill="#D71A06"/>
+  <circle cx="98" cy="340" r="13" fill="#b9805f"/><circle cx="302" cy="340" r="13" fill="#b9805f"/>
+  <circle cx="98" cy="340" r="4" fill="#CDF73D"/><circle cx="302" cy="340" r="4" fill="#CDF73D"/>
+  <path d="M30 420 H370" stroke="#CDF73D" stroke-width="1" opacity=".6"/>
+  <g fill="#CDF73D" transform="translate(340 60)"><rect x="-2" y="-16" width="4" height="32"/><rect x="-2" y="-16" width="4" height="32" transform="rotate(60)"/><rect x="-2" y="-16" width="4" height="32" transform="rotate(-60)"/></g>
+</svg></div>
 </div></header>
 
 <section class="block" id="what"><div class="in">
