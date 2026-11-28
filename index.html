@@ -81,6 +81,14 @@ section.block .head p{margin:0;color:var(--muted)}
 .dots span.on{background:var(--ochre-ink)}
 .src{color:#d8d6e2;font-size:12px;max-width:560px;text-align:center;margin:0}
 
+/* what we do */
+#what{padding-bottom:0}
+.what{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;list-style:none;padding:0;margin:0}
+.what li{display:flex;flex-direction:column;gap:8px;padding-top:16px;border-top:1px solid var(--ochre);min-width:0}
+.what .k{font-family:var(--caps);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ochre)}
+.what h3{font-size:26px}
+.what p{margin:0;color:var(--muted);font-size:17px}
+
 /* season */
 .season{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px;list-style:none;padding:0;margin:0}
 .season li{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:20px;display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -106,7 +114,7 @@ footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:v
 
 <div class="bar"><div class="in">
   <a class="logo" href="#top">The Good God Question</a>
-  <nav><a href="#numbers">Belief in Numbers</a><a href="#season">Season 1</a><a href="#about">About</a></nav>
+  <nav><a href="#what">What we do</a><a href="#numbers">Belief in Numbers</a><a href="#season">Season 1</a><a href="#about">About</a></nav>
 </div></div>
 
 <header class="hero" id="top"><div class="in">
@@ -118,6 +126,19 @@ footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:v
     <a class="btn" id="yt" href="#season">YouTube</a>
   </div>
 </div></header>
+
+<section class="block" id="what"><div class="in">
+  <div class="head">
+    <div class="eyebrow">What we do</div>
+    <h2>One question, asked many ways</h2>
+    <p>The Good God Question explores why humans believe: where faith came from, what it does for people, and why it still shapes the world. Every claim comes from real research, explained in plain language.</p>
+  </div>
+  <ul class="what">
+    <li><span class="k">YouTube</span><h3>Video essays</h3><p>One big question per episode, from the first rituals to today. Each ends with songs that carry the same idea.</p></li>
+    <li><span class="k">Instagram</span><h3>Reels</h3><p>One surprising idea in under a minute: a theory, a scholar, a story, and a question to take with you.</p></li>
+    <li><span class="k">This website</span><h3>Belief in Numbers</h3><p>Old surveys about faith, the theory behind them, and what they might mean for us now.</p></li>
+  </ul>
+</div></section>
 
 <section class="block" id="numbers"><div class="in">
   <div class="head">
@@ -147,12 +168,14 @@ footer .made{font-family:var(--display);font-style:italic;font-size:17px;color:v
 <section class="block" id="about"><div class="in about">
   <div>
     <div class="eyebrow">About</div>
-    <blockquote>"I'm someone with a question I can't put down."</blockquote>
+    <blockquote>"Every society has believed in something it cannot see. I want to know why."</blockquote>
   </div>
   <div class="text">
-    <p>Hi, I'm Ritul. I'm a master's student in Delhi, and I have questions about almost everything. But one question has followed me since I was a child: God.</p>
-    <p>I've been a Shiv devotee for as long as I can remember. And for just as long, I've wondered if he is really there. So instead of pushing the question away, I decided to go looking, through psychology, philosophy, history, anthropology, and the spiritual side too.</p>
-    <p>I'm not a priest, and I'm not here to take anyone's faith away. If you've ever stood in a temple, a church or a mosque and wondered what is really going on, join me. Let's work it out together.</p>
+    <p>I'm Ritul, a lawyer. I was brought up in Kolkata, but my family comes from Bhawanipore, a village in Bihar.</p>
+    <p>Bhawanipore has a story. The poet Vidyapati sang to Shiva with so much love that, people say, Shiva came down just to listen. He took the form of a servant called Ugna, so he could stay close to the songs. The moment his secret was spoken aloud, Ugna disappeared, and Vidyapati spent the rest of his life calling for him.</p>
+    <p>I think of that story every time a song stops me in my tracks. I'm only human, and a good song still mesmerises me. In those moments it feels as if something is listening too. Maybe that is where belief begins.</p>
+    <p>The Good God Question is my way of asking why. I look at where belief came from, what it does for people, and why it still shapes politics, love and war. I read the research in psychology, history, anthropology and philosophy, and explain it in plain language. And every episode ends with songs, because some of the best thinking about God has happened in music.</p>
+    <p>I'm not here to defend any faith, or to mock one. I want to understand it.</p>
   </div>
 </div></section>
 
